@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400&display=swap');
+
+/* Base Text Styles */
+p{
+    font-size: 24px;
+}
+h1,h2,h3{
+    font-family: 'Josefin Sans', helvetica, sans-serif;
+    text-transform: uppercase;
+}
+h2{
+    font-size: 2em;
+    letter-spacing: 6px;
+}
+h3{
+    font-size: 1.5em;
+    letter-spacing: 3px;
+}
+.jumbo{
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+@media (min-width: 50em){
+    h2{
+        font-size: 4em;
+    }
+    .jumbo{
+        font-size: 6em;
+    }
+}
+@media (min-width: 75em){
+    .jumbo{
+        font-size: 10em;
+    }
+}

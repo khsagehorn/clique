@@ -1,0 +1,420 @@
+/* Base Document Styles */
+html,body{height:100%;margin:0;padding:0}
+body{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+a,.sans-serif{
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-family: 'Josefin Sans', helvetica, sans-serif;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Utility Classes */
+.content-width{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.less-wide{
+    max-width: 800px;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+.text-center{
+    text-align: center;
+}
+@media (min-width: 50em){
+    .three-quarter{
+        width: 75%;
+        margin: 0 0 0 auto;
+    }
+}
+
+/* Declare a couple CSS variables */
+:root{
+    --accent-color: #f88601;
+    --body: #323232;
+}
+
+/* Header and Main Nav */
+header{
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    color: #fff;
+}
+#logo{
+    position: relative;
+    display: inline-block;
+    height: 110px;
+    width: 110px;
+    background-color: var(--accent-color);
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center;
+    z-index: 2;
+
+}
+/* Ok, we're going to try something fun for the nav behaviors
+   Using JS to set a scroll attribute on the HTML tag,
+   we can read the value and apply styles as desired */
+html[data-scroll='0'] .header-nav {
+    transform: translateY(0);
+    background-color: transparent;
+    color: #fff;
+}
+html:not([data-scroll='0']) .header-nav {
+    transform: translateY(1);
+    transition:  transform .3s ease, background-color .4s step-end, color .4s step-end;
+}
+#logo:hover ~ .header-nav{
+    transform: translateY(0);
+}
+.header-nav{
+    display: inline-block;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform .3s ease-in-out;
+    background-color: #fff;
+    color: var(--body);
+
+}
+.header-nav:hover{
+    transform: translateY(0);
+}
+#main-menu{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    left: 110px;
+    height: 110px;
+}
+#main-menu li{
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 2em;
+    font-size: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tel{
+    position: fixed;
+    right: 2em;
+    top: 2em;
+    padding: 1em;
+    background-color: rgba(0,0,0,.3);
+    border-radius: .25em;
+}
+
+
+/* Hero */
+.hero{
+    position: relative;
+    height: 100vh;
+    background-color: #222;
+    color: #fff;
+}
+.hero:before{
+    content:"";
+    width:100%;
+    height:100%;
+    display:block;
+}
+.hero .heading{
+    position: absolute;
+    top: 30vh;
+    width: 100%;
+}
+.hero .heading .content{
+    width: 75%;
+    max-width: 1200px;
+    margin: 0 auto 0 20%;
+}
+.see-work{
+    position: absolute;
+    top: 50%;
+    transform: rotate(270deg);
+    color: var(--white, white);
+    text-transform: uppercase;
+}
+.see-work::before{
+    position: absolute;
+    content: '';
+    right: 100%;
+    top: .25em;
+    height: 2px;
+    /* This is totally a 'magic number', but it works. */
+    width: calc(50vh - 65%);
+    background-color: var(--accent-color);
+    margin: 0 1em .125em 0;
+}
+@media (min-width: 50em){
+    .hero .heading .content{
+        margin-left: auto;
+    }
+}
+
+/* Projects */
+.projects .single{
+    padding-top: 8em;
+}
+.projects .content{
+    padding: 0 1em 2em;;
+}
+.projects .btn-group{
+    display: flex;
+    flex-wrap: wrap;
+}
+.single figure{
+    position: relative;
+}
+.single:nth-child(odd) figure{
+    margin-right: 0;
+}
+.single:nth-child(even) figure{
+    margin-left: 0;
+}
+.projects img{
+    width: 100%;
+    box-shadow: 0 0 24px 12px rgba(0,0,0,.15);
+    margin-bottom: 1em;
+}
+.single .view{
+    color: var(--accent-color);
+    padding: 0 2em;
+}
+.single:nth-child(odd) .view{
+    float: right;
+}
+@media (min-width: 50em){
+    .projects .content{
+        padding: 0 0 6em;
+    }
+    .single .view{
+        padding: 0;
+        position: absolute;
+        top: 6em;
+    }
+    .single:nth-child(odd) .view{
+        float: none;
+        transform: rotate(270deg);
+        left: -8em;
+
+    }
+    .single:nth-child(even) .view{
+        right: -8em;
+        transform: rotate(90deg);
+    }
+}
+
+/* Link Grid */
+.link-grid{
+    padding: 8em 2em;
+}
+.link-grid ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 2em 0;
+}
+.link-grid li{
+    position: relative;
+    flex: 1 0 21.5%;
+    margin: 5px;
+    background-size: 110%;
+    background-position: center;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: background-size .3s linear;
+}
+.link-grid li figure{
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.link-grid li a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.link-grid li img{
+    max-height: 5em;
+}
+.link-grid li::before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}
+.link-grid li::after{
+    content: '';
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .5;
+    transition: opacity .3s linear;
+}
+.link-grid li:hover{
+    background-size: 100%;
+    filter: grayscale(0);
+}
+.link-grid li:hover::after{
+    opacity: 0;
+}
+@media (min-width: 50em){
+ .link-grid ul{
+     margin: 2em;
+ }
+}
+
+/* CTA Banner */
+.cta-banner{
+    position: relative;
+    padding: 8em 0;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.cta-banner h2{
+    font-family: serif;
+    font-size: 3em;
+    font-weight: 400;
+    letter-spacing: initial;
+    text-transform: none;
+}
+
+/* Footer */
+footer{
+    padding: 4em;
+    border-top: 1px solid #eee;
+}
+footer li{
+    display: inline-block;
+    margin-right: 2em;
+    letter-spacing: initial;
+    color: var(--body);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+footer li a{
+    color: var(--accent-color);
+    letter-spacing: initial;
+}
+
+
+/* Theme Flavor */
+.square-flair{
+    position: absolute;
+    width: 8em;
+    height: 8em;
+    border: 1px solid var(--accent-color);
+    transform: rotate(45deg);
+}
+.square-flair.bottom{
+    bottom: -4em;
+    right: 8em;
+}
+
+.btn{
+    margin: .25em;
+    padding: 1em;
+    color: inherit;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    border: 2px solid var(--accent-color);
+    border-radius: .25em;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+}
+.btn:hover{
+    background-color: #fff;
+    color: var(--accent-color);
+    border-color: #fff;
+}
+.btn:hover::before{
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+.btn::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-color);
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transform: scale3d(0.6, 0.6, 1);
+    transition: transform .3s, opacity .3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.fancy-btn{
+    position: relative;
+    display: inline-block;
+    font-size: 1em;
+    min-width: 9em;
+    background-color: transparent;
+    margin: 0 2em;
+    color: var(--accent-color);
+    overflow: hidden;
+    border: 2px solid;
+    padding: 1em 2em;
+    transition: transform .3s;
+}
+.fancy-btn span{
+    display: block;
+    text-transform: uppercase;
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+.fancy-btn::after{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: var(--accent-color);
+    line-height: 3em;
+    text-transform: uppercase;
+    transform: translateY(-100%);
+    transition: transform .3s;
+}
+.fancy-btn:hover::after{
+    transform: translateY(0);
+}
+.fancy-btn:hover span{
+    transform: translateY(300%);
+}
