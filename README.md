@@ -1,5 +1,6 @@
-# clique
-Recreation of the Clique Studios homepage
+# Clique
+
+[View Page Here](https://khsagehorn.github.io/clique/)
 
 ## Overview
 
