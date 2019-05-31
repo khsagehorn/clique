@@ -341,6 +341,9 @@ html:not([data-scroll='0']) .header-nav {
  .link-grid ul{
      margin: 2em;
  }
+ .link-grid li{
+   flex: 1 0 21.5%;
+ }
 }
 
 /* CTA Banner */
