@@ -1,5 +1,12 @@
 /* Base Document Styles */
-html,body{height:100%;margin:0;padding:0}
+html,body{
+  height:100%;
+  margin:0;
+  padding:0
+}
+html{
+  scroll-behavior: smooth;
+}
 body{
     margin: 0;
     padding: 0;
@@ -84,8 +91,9 @@ html:not([data-scroll='0']) .header-nav {
 .header-nav{
     display: inline-block;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     top: 0;
+    left: 0;
     transform: translateX(-100%);
     transition: transform .3s ease-in-out;
     background-color: #fff;
@@ -93,32 +101,39 @@ html:not([data-scroll='0']) .header-nav {
 
 }
 .header-nav:hover{
-    transform: translateY(0);
+    transform: translateX(0);
 }
 #main-menu{
     position: relative;
     padding: 0;
-    margin: 0;
-    left: 110px;
+    margin: 0 0 0 110px;
     height: 110px;
 }
 #main-menu li{
     position: relative;
     display: inline-block;
     text-transform: uppercase;
-    padding: 2em;
+    padding: 2em 2%;
     font-size: 13px;
     top: 50%;
     transform: translateY(-50%);
 }
-
+#main-menu li:first-of-type{
+  padding-left: 2em;
+}
 .tel{
-    position: fixed;
-    right: 2em;
-    top: 2em;
-    padding: 1em;
-    background-color: rgba(0,0,0,.3);
-    border-radius: .25em;
+    display: none;
+}
+@media (min-width: 70em){
+  .tel{
+      display: block;
+      position: fixed;
+      right: 2em;
+      top: 2em;
+      padding: 1em;
+      background-color: rgba(0,0,0,.3);
+      border-radius: .25em;
+  }
 }
 
 
@@ -148,6 +163,7 @@ html:not([data-scroll='0']) .header-nav {
 .see-work{
     position: absolute;
     top: 50%;
+    left: -1em;
     transform: rotate(270deg);
     color: var(--white, white);
     text-transform: uppercase;
@@ -170,6 +186,9 @@ html:not([data-scroll='0']) .header-nav {
 }
 
 /* Projects */
+.projects{
+  position: relative;
+}
 .projects .single{
     padding-top: 8em;
 }
@@ -201,6 +220,37 @@ html:not([data-scroll='0']) .header-nav {
 .single:nth-child(odd) .view{
     float: right;
 }
+#projects-nav{
+  position: sticky;
+  top: 0;
+  margin-left: 1em;
+  z-index: 1;
+}
+#projects-nav ol{
+  position: absolute;
+  counter-reset: li;
+  padding-left: 0;
+  top: 8em;
+}
+#projects-nav li{
+  position: relative;
+  margin: 0 0 .5em 2em;
+  padding: .5em;
+  list-style: none;
+  font-style: italic;
+}
+#projects-nav li a{
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  top: 0;
+  left: 0;
+}
+#projects-nav li::before {
+  content: counter(li, decimal-leading-zero);
+  counter-increment: li;
+}
+
 @media (min-width: 50em){
     .projects .content{
         padding: 0 0 6em;
@@ -224,7 +274,10 @@ html:not([data-scroll='0']) .header-nav {
 
 /* Link Grid */
 .link-grid{
+    position: relative;
     padding: 8em 2em;
+    z-index: 2;
+    background-color: #fff;
 }
 .link-grid ul{
     display: flex;
